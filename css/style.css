@@ -1,0 +1,51 @@
+/* Home */
+
+.img-fluid {
+    width: 100vw;
+}
+
+.lo-nuevo {
+    display: flex;
+    justify-content: center;
+}
+
+.cards-lo-nuevo {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.redes {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.footer {
+    background-color: black;
+    height: 150px;
+    text-align: center;
+}
+
+div button {
+    background-color: black;
+    height: 50px;
+    padding-top: 10px;
+
+}
+
+button i {
+    font-size: 45px;
+    color: white;
+}
+
+.card-img-top {
+    height: 380px;
+}
+
+div p {
+    padding-top: 10px;
+    color: rgb(61, 61, 61);
+}
