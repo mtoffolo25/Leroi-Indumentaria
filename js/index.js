@@ -62,6 +62,7 @@ function buscarCatalogoXprenda(arrayPrendas) {
         console.log(`Para la prenda ${prendaBuscada} no hay coincidencias en nuestro catalogo`)
         buscarCatalogoXprenda()
     }
+    
 }
 
 
@@ -69,12 +70,11 @@ function buscarXcolor(arrayPrendas) {
     let colorBuscado = prompt("Ingrese el color de prenda que esta buscando:")
     let busqueda = arrayPrendas.filter(
         (prenda) => prenda.color.toLowerCase() == colorBuscado.toLowerCase()
-
     )
     console.log(busqueda)
     if (busqueda.length == 0) {
         console.log(`Para el color ${colorBuscado} no hay coincidencias en nuestro catalogo`)
-        buscarCatalogoXprenda()
+        buscarXcolor()
     }
 }
 
@@ -107,6 +107,7 @@ function preguntarOpcion() {
             break
         case 2:
             buscarCatalogoXprenda(arrayPrendas)
+    
             break
         case 3:
             buscarXcolor(arrayPrendas)
@@ -121,6 +122,7 @@ function preguntarOpcion() {
             return salir
         default:
             console.log("Para continuar ingrese un número por favor")
+            preguntarOpcion()
             break
     }
 }
