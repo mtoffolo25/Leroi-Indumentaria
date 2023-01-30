@@ -56,12 +56,39 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./Pages/contacto.html">Contacto</a>
+            <a class="nav-link" href="" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop">Contacto</a>
           </li>
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">CONTACTATE CON NOSOTROS</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Ingresa tu e-mail</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label" >Mensaje</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </ul>
+        <i id="carrito" class="fa-solid fa-cart-shopping"></i>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
+          <button class="btn btn-outline-success" type="submit" id="btnPrincipal">Buscar</button>
         </form>
       </div>
     </div>
@@ -97,8 +124,7 @@
       <img src="./Assets/short-baño-nuevo.jpg" class="card-img-top" alt="Short de Baño">
       <div class="card-body">
         <h5 class="card-title">Short de Baño</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text"></p>
         <a href="#" class="btn btn-primary">Ver más</a>
       </div>
     </div>
@@ -106,8 +132,7 @@
       <img src="./Assets/remera-nueva.jpg" class="card-img-top" alt="Remera Oversize">
       <div class="card-body">
         <h5 class="card-title">Remera Oversize</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text"></p>
         <a href="#" class="btn btn-primary">Ver más</a>
       </div>
     </div>
@@ -115,8 +140,7 @@
       <img src="./Assets/musculosa-nueva.jpg" class="card-img-top" alt="Musculosa">
       <div class="card-body">
         <h5 class="card-title">Musculosa</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text"></p>
         <a href="#" class="btn btn-primary">Ver más</a>
       </div>
     </div>
@@ -124,15 +148,14 @@
       <img src="./Assets/remera.jpg" class="card-img-top" alt="Remera">
       <div class="card-body">
         <h5 class="card-title">Remera</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+        <p class="card-text"></p>
         <a href="#" class="btn btn-primary">Ver más</a>
       </div>
     </div>
   </div>
   <footer>
     <div class="footer">
-      <h1 class="redes">Seguinos en...</h1>
+      <h1 class="redes">Seguinos en</h1>
       <a href="https://www.instagram.com/leroi_indumentaria/"><button><i
             class="fa-brands fa-instagram"></i></button></a>
       <p>Copyright 2023 © Loned Indumentaria</p>
