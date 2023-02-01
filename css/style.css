@@ -81,3 +81,54 @@ div p {
 .classRemeras {
     padding-bottom: 15px;
 }
+
+/* Camisas */
+
+#catCamisas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 75%;
+    text-align: center;
+    padding-left: 25%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.classCamisas {
+    padding-bottom: 15px;
+}
+
+/* Bermudas */
+
+#catBermudas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 75%;
+    text-align: center;
+    padding-left: 25%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.classBermudas {
+    padding-bottom: 15px;
+}
+
+/* Jeans */
+
+#catJeans {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 75%;
+    text-align: center;
+    padding-left: 25%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.classJeans {
+    padding-bottom: 15px;
+}
