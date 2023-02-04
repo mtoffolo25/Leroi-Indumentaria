@@ -37,15 +37,21 @@ for (remera of arrayRemeras) {
     <div class="card-body">
       <h5 class="card-title">${remera.tipo} ${remera.modelo}</h5>
       <h6 class=${remera.marca}> $${remera.precio}</h6>
-      <a href="#" id="AgrCarro ${remera.id}" class="btn btn-primary">Agregar al Carrito</a>
+      <a href="#" id="AgrCarro${remera.id}" class="btn btn-primary">Agregar al Carrito</a>
     </div>
   </div>`
 
     divRemeras.appendChild(nuevaRemera)
-    let agregarAlCarrito = document.getElementById(`AgrCarro ${remera.id}`)
+    let agregarAlCarrito = document.getElementById(`AgrCarro${remera.id}`)
     agregarAlCarrito.addEventListener("click", () => {
-        console.log (`La prenda ${remera.tipo} ${remera.modelo} de color ${remera.color} ha sido agregada al carrito. Vale $${remera.precio}`)
+        agregarProdCarrito(remera)
     })
-    }
+}
 
+let productosEnCarrito = []
+
+function agregarProdCarrito(remera) {
+    console.log(remera)
+    console.log(`La prenda ${remera.tipo} ${remera.modelo} de color ${remera.color} ha sido agregada al carrito. Vale $${remera.precio}`)
+}
 
