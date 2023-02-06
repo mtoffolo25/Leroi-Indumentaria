@@ -27,9 +27,10 @@ const camisa9 = new camisas(`9`, `Camisa`, `Lino`, `Vandal`, `Blanco`, 6900, "ca
 
 
 const arrayCamisas = [camisa1, camisa2, camisa3, camisa4, camisa5, camisa6, camisa7, camisa8, camisa9]
+productosEnCarrito = [] 
 
 let divCamisas = document.getElementById("catCamisas")
-for (camisa of arrayCamisas) {
+for (let camisa of arrayCamisas) {
     let nuevaCamisa = document.createElement("div")
     nuevaCamisa.classList.add("classCamisas")
     nuevaCamisa.innerHTML = `<div class="card" style="width: 18rem;">
@@ -40,10 +41,90 @@ for (camisa of arrayCamisas) {
       <a href="#" id="AgrCarro ${camisa.id}" class="btn btn-primary">Agregar al Carrito</a>
     </div>
   </div>`
+divCamisas.appendChild(nuevaCamisa)
+let AgrCarrito = document.getElementById(`AgrCarro ${camisa.id}`)
+AgrCarrito.addEventListener("click", (e) => {
+    console.log(`La prenda ${camisa.tipo} ${camisa.modelo} de color ${camisa.color} ha sido agregada al carrito`)
+    e.preventDefault()
+    agregarAlCarrito(camisa)
+    cargarProductosCarrito(productosEnCarrito)
+})
+}
+if (localStorage.getItem("carrito")) {
+productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
+console.log(productosEnCarrito)
+} else {
+productosEnCarrito = []
+localStorage.setItem("carrito", productosEnCarrito)
 
-    divCamisas.appendChild(nuevaCamisa)
-    let agregarAlCarrito = document.getElementById(`AgrCarro ${camisa.id}`)
-    agregarAlCarrito.addEventListener("click", () => {
-        console.log (`La prenda ${camisa.tipo} ${camisa.modelo} de color ${camisa.color} ha sido agregada al carrito. Vale $${camisa.precio}`)
+}
+
+modalBodyCarrito = document.getElementById("modal-bodyCarrito")
+
+function cargarProductosCarrito(productosEnCarrito) {
+modalBodyCarrito.innerHTML = ""
+productosEnCarrito.forEach((camisa) => {
+    modalBodyCarrito.innerHTML +=
+        `
+    <div class="card border-primary mb-3" id ="productoCarrito${camisa.id}" style="max-width: 540px;">
+             <img class="card-img-top" height="200px" src="../assets/${camisa.imagen}" alt="">
+             <div class="card-body">
+                    <h4 class="card-title">${camisa.tipo}</h4>
+                
+                     <p class="card-text">$${camisa.precio}</p> 
+                     <button class= "btn btn-danger" id="botonEliminar${camisa.id}"><i class="fas fa-trash-alt"></i></button>
+             </div>    
+        </div>
+    `
+})
+
+for (let camisa of productosEnCarrito) {
+document.getElementById(`botonEliminar${camisa.id}`).addEventListener("click",()=>{
+ console.log(`La prenda ${camisa.tipo} ${camisa.modelo} fue removida del carrito`)
+ let cardProductoCarrito = document.getElementById(`productoCarrito${camisa.id}`)
+ cardProductoCarrito.remove()
+ let borrarPrenda = productosEnCarrito.find((remera) => remera.id == camisa.id)
+ let indice = productosEnCarrito.indexOf(borrarPrenda)
+ productosEnCarrito.splice(indice, 1)
+ localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+ calcularTotal(productosEnCarrito)
+})
+}
+calcularTotal(productosEnCarrito)
+}
+
+function agregarAlCarrito(camisa) {
+let camisaAgregada = productosEnCarrito.find((elem) => elem.id == camisa.id)
+if (camisaAgregada == undefined) {
+    productosEnCarrito.push(camisa)
+    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+    Swal.fire({
+        title: 'Prenda agregada al carrito',
+        text: `La prenda ${camisa.tipo} ${camisa.modelo} ha sido agregada al carrito`,
+        icon: "info",
+        confirmButtonColor: "green",
+        confirmButtonText: "Aceptar",
+        timer: 3000,
+        imageUrl: `../assets/${camisa.imagen}`,
+        imageHeight: 200
     })
-    }
+
+} else {
+    Swal.fire({
+        title: 'Prenda ya agregada',
+        text: `La prenda ${camisa.tipo} ${camisa.modelo} ya existe en el carrito`,
+        icon: "info",
+        showConfirmButton: false,
+        timer: 1500,
+
+    })
+}
+}
+
+precioTotal = document.getElementById("precioTotal")
+
+function calcularTotal(productosEnCarrito){
+let total = productosEnCarrito.reduce((acc, camisa)=>acc + camisa.precio ,0)
+precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
+total == 0 ? precioTotal.innerHTML = "No hay productos en el carrito por el momento." : precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
+}
