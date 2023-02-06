@@ -125,6 +125,7 @@ div p {
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 75%;
+    height: 100vh;
     text-align: center;
     padding-left: 25%;
     padding-top: 30px;

@@ -14,15 +14,15 @@ class camisas {
     }
 }
 
-const camisa1 = new camisas(`1`, `Camisa`, `Lino`, `Bando`, `Azul`, 4500, "camisa-azul.jpg")
-const camisa2 = new camisas(`2`, `Camisa`, `Lino`, `Guns`, `Beige`, 4000, "camisa-beige.jpg")
-const camisa3 = new camisas(`3`, `Camisa`, `Lino`, `Vandal`, `Blanco`, 4700, "camisa-blanca.jpg")
-const camisa4 = new camisas(`4`, `Camisa`, `Lino`, `Bando`, `Celeste`, 5200, "camisa-celeste.jpg")
-const camisa5 = new camisas(`5`, `Camisa`, `Lino`, `Vanda`, `Celeste`, 5800, "camisa-celeste2.jpg")
-const camisa6 = new camisas(`6`, `Camisa`, `Lino`, `May`, `Marron`, 6000, "camisa-marron.jpg")
-const camisa7 = new camisas(`7`, `Camisa`, `Cuello Mao`, `Bando`, `Negro`, 7500, "camisa-negra-mao.jpg")
-const camisa8 = new camisas(`8`, `Camisa`, `Lino`, `Koda`, `Negro`, 7300, "camisa-negra.jpg")
-const camisa9 = new camisas(`9`, `Camisa`, `Lino`, `Vandal`, `Blanco`, 6900, "camisa.jpg")
+const camisa1 = new camisas(`11`, `Camisa`, `Lino`, `Bando`, `Azul`, 4500, "camisa-azul.jpg")
+const camisa2 = new camisas(`12`, `Camisa`, `Lino`, `Guns`, `Beige`, 4000, "camisa-beige.jpg")
+const camisa3 = new camisas(`13`, `Camisa`, `Lino`, `Vandal`, `Blanco`, 4700, "camisa-blanca.jpg")
+const camisa4 = new camisas(`14`, `Camisa`, `Lino`, `Bando`, `Celeste`, 5200, "camisa-celeste.jpg")
+const camisa5 = new camisas(`15`, `Camisa`, `Lino`, `Vanda`, `Celeste`, 5800, "camisa-celeste2.jpg")
+const camisa6 = new camisas(`16`, `Camisa`, `Lino`, `May`, `Marron`, 6000, "camisa-marron.jpg")
+const camisa7 = new camisas(`17`, `Camisa`, `Cuello Mao`, `Bando`, `Negro`, 7500, "camisa-negra-mao.jpg")
+const camisa8 = new camisas(`18`, `Camisa`, `Lino`, `Koda`, `Negro`, 7300, "camisa-negra.jpg")
+const camisa9 = new camisas(`19`, `Camisa`, `Lino`, `Vandal`, `Blanco`, 6900, "camisa.jpg")
 
 
 
