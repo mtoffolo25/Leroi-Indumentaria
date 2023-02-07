@@ -134,3 +134,20 @@ div p {
 .classJeans {
     padding-bottom: 15px;
 }
+
+/* Shorts de Baño */
+
+#catShorts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 75%;
+    text-align: center;
+    padding-left: 25%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.classShorts {
+    padding-bottom: 15px;
+}

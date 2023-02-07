@@ -14,9 +14,9 @@ class jeans {
     }
 }
 
-const jeans1 = new jeans(`1`, `Jeans`, `Elastizado`, `Bando`, `Azul`, 8500, "jeans-chupin.jpg")
-const jeans2 = new jeans(`2`, `Joger`, `Jeans`, `Guns`, `Azul`, 8800, "joger.jpg")
-const jeans3 = new jeans(`3`, `Joger`, `Gabardina`, `Vandal`, `Marron`, 7900, "joger-gabardina.jpg")
+const jeans1 = new jeans(`25`, `Jeans`, `Elastizado`, `Bando`, `Azul`, 8500, "jeans-chupin.jpg")
+const jeans2 = new jeans(`26`, `Joger`, `Jeans`, `Guns`, `Azul`, 8800, "joger.jpg")
+const jeans3 = new jeans(`27`, `Joger`, `Gabardina`, `Vandal`, `Marron`, 7900, "joger-gabardina.jpg")
 
 
 
@@ -65,7 +65,7 @@ agregarCarro.addEventListener("click", (e) => {
         <div class="card border-primary mb-3" id ="productoCarrito${jean.id}" style="max-width: 540px;">
                  <img class="card-img-top" height="200px" src="../assets/${jean.imagen}" alt="">
                  <div class="card-body">
-                        <h4 class="card-title">${jean.tipo}</h4>
+                        <h4 class="card-title">${jean.tipo} ${jean.modelo} de color ${jean.color}</h4>
                     
                          <p class="card-text">$${jean.precio}</p> 
                          <button class= "btn btn-danger" id="botonEliminar${jean.id}"><i class="fas fa-trash-alt"></i></button>

@@ -73,7 +73,7 @@ agregarAlCarro.addEventListener("click", (e) => {
         <div class="card border-primary mb-3" id ="productoCarrito${remera.id}" style="max-width: 540px;">
                  <img class="card-img-top" height="200px" src="../assets/${remera.imagen}" alt="">
                  <div class="card-body">
-                        <h4 class="card-title">${remera.tipo}</h4>
+                        <h4 class="card-title">${remera.tipo} ${remera.modelo} de color ${remera.color}</h4>
                     
                          <p class="card-text">$${remera.precio}</p> 
                          <button class= "btn btn-danger" id="botonEliminar${remera.id}"><i class="fas fa-trash-alt"></i></button>

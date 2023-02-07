@@ -61,7 +61,7 @@ function cargarProductosCarrito(productosEnCarrito) {
         <div class="card border-primary mb-3" id ="productoCarrito${bermuda.id}" style="max-width: 540px;">
                  <img class="card-img-top" height="200px" src="../assets/${bermuda.imagen}" alt="">
                  <div class="card-body">
-                        <h4 class="card-title">${bermuda.tipo}</h4>
+                        <h4 class="card-title">${bermuda.tipo} ${bermuda.modelo} de color ${bermuda.color}</h4>
                     
                          <p class="card-text">$${bermuda.precio}</p> 
                          <button class= "btn btn-danger" id="botonEliminar${bermuda.id}"><i class="fas fa-trash-alt"></i></button>

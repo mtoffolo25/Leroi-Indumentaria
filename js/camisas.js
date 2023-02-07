@@ -69,7 +69,7 @@ productosEnCarrito.forEach((camisa) => {
     <div class="card border-primary mb-3" id ="productoCarrito${camisa.id}" style="max-width: 540px;">
              <img class="card-img-top" height="200px" src="../assets/${camisa.imagen}" alt="">
              <div class="card-body">
-                    <h4 class="card-title">${camisa.tipo}</h4>
+                    <h4 class="card-title">${camisa.tipo} ${camisa.modelo} de color ${camisa.color}</h4>
                 
                      <p class="card-text">$${camisa.precio}</p> 
                      <button class= "btn btn-danger" id="botonEliminar${camisa.id}"><i class="fas fa-trash-alt"></i></button>
