@@ -14,6 +14,7 @@
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../css/style.css">
 <script src="https://kit.fontawesome.com/fe590401d5.js" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -59,30 +60,31 @@
                   data-bs-target="#staticBackdrop">Contacto</a>
               </li>
               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="staticBackdropLabel">CONTACTATE CON NOSOTROS</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Ingresa tu e-mail</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label" >Mensaje</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                      <button type="button" class="btn btn-primary">Enviar</button>
-                    </div>
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">CONTACTATE CON NOSOTROS</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3" id="divEmail">
+                    <label for="exampleFormControlInput1" class="form-label">Ingresa tu e-mail</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                      placeholder="name@example.com" style="" value="">
+                  </div>
+                  <div class="mb-3" id="divMensaje">
+                    <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="" style=""></textarea>
                   </div>
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="botonCerrar">Cerrar</button>
+                  <button type="button" class="btn btn-primary" id="botonEnviar">Enviar</button>
+                </div>
               </div>
+            </div>
+          </div>
             </ul>
             <!-- Button trigger modal -->
         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnCarrito">
@@ -123,5 +125,6 @@
     
         </div>
       </footer>
+      <script src="../JS/contacto.js"></script>
 </body>
 </html>
