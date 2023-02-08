@@ -20,7 +20,7 @@ const short4 = new shorts(`31`, `Short`, `Rayado`, `Rosa`, 5200, "short3.jpg")
 const short5 = new shorts(`32`, `Short`, `Rayado`, `Celeste`, 5800, "short4.jpg")
 const short6 = new shorts(`33`, `Short`, `Rayado`, `Verde`, 6000, "short5.jpg")
 const short7 = new shorts(`34`, `Short`, `Rayado`, `Azul`, 5700, "short6.jpg")
-const short8 = new shorts(`35`, `Short`, `Rayado`,`Negro, Blanco y Rojo`, 5300, "short7.jpg")
+const short8 = new shorts(`35`, `Short`, `Rayado`, `Negro, Blanco y Rojo`, 5300, "short7.jpg")
 
 
 const arrayShorts = [short1, short2, short3, short4, short5, short6, short7, short8]
@@ -29,9 +29,9 @@ let productosEnCarrito = []
 
 let divShorts = document.getElementById("catShorts")
 for (let short of arrayShorts) {
-	let nuevoShort = document.createElement('div');
-	nuevoShort.classList.add('classShorts');
-	nuevoShort.innerHTML = `<div class="card" style="width: 18rem;">
+    let nuevoShort = document.createElement('div');
+    nuevoShort.classList.add('classShorts');
+    nuevoShort.innerHTML = `<div class="card" style="width: 18rem;">
     <img src=../Assets/${short.imagen} class="card-img-top" alt="Short">
     <div class="card-body">
       <h5 class="card-title">${short.tipo} ${short.modelo}</h5>
@@ -40,29 +40,29 @@ for (let short of arrayShorts) {
     </div>
   </div>`;
 
-	divShorts.appendChild(nuevoShort);
+    divShorts.appendChild(nuevoShort);
 
-	let agregarShort = document.getElementById(`${short.id}`);
-    
-agregarShort.addEventListener("click", (e) => {
+    let agregarShort = document.getElementById(`${short.id}`);
+
+    agregarShort.addEventListener("click", (e) => {
         console.log(`La prenda ${short.tipo} ${short.modelo} de color ${short.color} ha sido agregada al carrito`)
         e.preventDefault()
         agregarAlCarrito(short)
         cargarProductosCarrito(productosEnCarrito)
     })
-    }
-    if (localStorage.getItem("carrito")) {
+}
+if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
     console.log(productosEnCarrito)
-    } else {
+} else {
     productosEnCarrito = []
     localStorage.setItem("carrito", productosEnCarrito)
-    
-    }
-    
-    modalBodyCarrito = document.getElementById("modal-bodyCarrito")
-    
-    function cargarProductosCarrito(productosEnCarrito) {
+
+}
+
+modalBodyCarrito = document.getElementById("modal-bodyCarrito")
+
+function cargarProductosCarrito(productosEnCarrito) {
     modalBodyCarrito.innerHTML = ""
     productosEnCarrito.forEach((short) => {
         modalBodyCarrito.innerHTML +=
@@ -78,23 +78,23 @@ agregarShort.addEventListener("click", (e) => {
             </div>
         `
     })
-    
+
     for (let short of productosEnCarrito) {
-    document.getElementById(`botonEliminar${short.id}`).addEventListener("click",()=>{
-     console.log(`La prenda ${short.tipo} ${short.modelo} fue removida del carrito`)
-     let cardProductoCarrito = document.getElementById(`productoCarrito${short.id}`)
-     cardProductoCarrito.remove()
-     let borrarPrenda = productosEnCarrito.find((short) => short.id == short.id)
-     let indice = productosEnCarrito.indexOf(borrarPrenda)
-     productosEnCarrito.splice(indice, 1)
-     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
-     calcularTotal(productosEnCarrito)
-    })
+        document.getElementById(`botonEliminar${short.id}`).addEventListener("click", () => {
+            console.log(`La prenda ${short.tipo} ${short.modelo} fue removida del carrito`)
+            let cardProductoCarrito = document.getElementById(`productoCarrito${short.id}`)
+            cardProductoCarrito.remove()
+            let borrarPrenda = productosEnCarrito.find((short) => short.id == short.id)
+            let indice = productosEnCarrito.indexOf(borrarPrenda)
+            productosEnCarrito.splice(indice, 1)
+            localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+            calcularTotal(productosEnCarrito)
+        })
     }
     calcularTotal(productosEnCarrito)
-    }
-    
-    function agregarAlCarrito(short) {
+}
+
+function agregarAlCarrito(short) {
     let shortAgregado = productosEnCarrito.find((elem) => elem.id == short.id)
     if (shortAgregado == undefined) {
         productosEnCarrito.push(short)
@@ -109,7 +109,7 @@ agregarShort.addEventListener("click", (e) => {
             imageUrl: `../assets/${short.imagen}`,
             imageHeight: 200
         })
-    
+
     } else {
         Swal.fire({
             title: 'Prenda ya agregada',
@@ -117,15 +117,40 @@ agregarShort.addEventListener("click", (e) => {
             icon: "info",
             showConfirmButton: false,
             timer: 1500,
-    
+
         })
     }
-    }
-    
-    precioTotal = document.getElementById("precioTotal")
-    
-    function calcularTotal(productosEnCarrito){
-    let total = productosEnCarrito.reduce((acc, short)=>acc + short.precio ,0)
+}
+
+precioTotal = document.getElementById("precioTotal")
+
+function calcularTotal(productosEnCarrito) {
+    let total = productosEnCarrito.reduce((acc, short) => acc + short.precio, 0)
     precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
     total == 0 ? precioTotal.innerHTML = "No hay productos en el carrito por el momento." : precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
-    }
+}
+
+let finalizarCompra = document.getElementById("finalizarCompra")
+finalizarCompra.addEventListener("click", finCompra)
+function finCompra() {
+    Swal.fire({
+        title: '¿Estás seguro que quieres finalizar la compra?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'Cerrar'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Gracias por su compra!',
+                icon: 'success',
+            })
+            productosEnCarrito = []
+            localStorage.setItem("carrito", productosEnCarrito)
+            modalBodyCarrito.remove()
+            calcularTotal(productosEnCarrito)
+            finalizarCompra.remove()
+        }
+    })
+}

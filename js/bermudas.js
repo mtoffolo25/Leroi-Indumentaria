@@ -1,28 +1,28 @@
 class bermudas {
-    constructor (id, tipo, modelo, color, precio, imagen) {
+    constructor(id, tipo, modelo, color, precio, imagen) {
         this.id = id,
-        this.tipo = tipo,
-        this.modelo = modelo,
-        this.color = color,
-        this.precio = precio,
-        this.imagen = imagen
+            this.tipo = tipo,
+            this.modelo = modelo,
+            this.color = color,
+            this.precio = precio,
+            this.imagen = imagen
     }
     mostrarInfoPrenda() {
-      console.log(`Es un/a ${this.tipo}, modelo ${this.modelo} su marca es ${this.marca}, es de color ${this.color} y vale ${this.precio}`)
-  }
+        console.log(`Es un/a ${this.tipo}, modelo ${this.modelo} su marca es ${this.marca}, es de color ${this.color} y vale ${this.precio}`)
+    }
 }
 
-const bermuda1 = new bermudas (`20`, `Bermuda`, `Jeans`, `Azul`, 7400, `bermuda-jean.jpg`)
-const bermuda2 = new bermudas (`21`, `Bermuda`, `Gabardina`, `Negro`, 7600, `bermuda-lacoste-negra.jpg`)
-const bermuda3 = new bermudas (`22`, `Bermuda`, `Gabardina`, `Marrón`, 7600, `bermuda-lacoste.jpg`)
-const bermuda4 = new bermudas (`23`, `Bermuda`, `Jeans`, `Negro`, 7800, `bermuda-negra.jpg`)
-const bermuda5 = new bermudas (`24`, `Bermuda`, `Jeans`, `Negro`, 8000, `bermuda.jpg`)
+const bermuda1 = new bermudas(`20`, `Bermuda`, `Jeans`, `Azul`, 7400, `bermuda-jean.jpg`)
+const bermuda2 = new bermudas(`21`, `Bermuda`, `Gabardina`, `Negro`, 7600, `bermuda-lacoste-negra.jpg`)
+const bermuda3 = new bermudas(`22`, `Bermuda`, `Gabardina`, `Marrón`, 7600, `bermuda-lacoste.jpg`)
+const bermuda4 = new bermudas(`23`, `Bermuda`, `Jeans`, `Negro`, 7800, `bermuda-negra.jpg`)
+const bermuda5 = new bermudas(`24`, `Bermuda`, `Jeans`, `Negro`, 8000, `bermuda.jpg`)
 
 const arrayBermudas = [bermuda1, bermuda2, bermuda3, bermuda4, bermuda5]
 productosEnCarrito = []
 
 let divBermudas = document.getElementById("catBermudas")
-for(let bermuda of arrayBermudas) {
+for (let bermuda of arrayBermudas) {
     let nuevaBermuda = document.createElement("div")
     nuevaBermuda.classList.add("classBermudas")
     nuevaBermuda.innerHTML = `<div class="card" style="width: 18rem;">
@@ -33,7 +33,7 @@ for(let bermuda of arrayBermudas) {
       <a href="#" id="AgrCarro ${bermuda.id}" class="btn btn-primary">Agregar al Carrito</a>
     </div>
   </div>`
-  divBermudas.appendChild(nuevaBermuda)
+    divBermudas.appendChild(nuevaBermuda)
     let btnCarro = document.getElementById(`AgrCarro ${bermuda.id}`)
     btnCarro.addEventListener("click", (e) => {
         console.log(`La prenda ${bermuda.tipo} ${bermuda.modelo} de color ${bermuda.color} ha sido agregada al carrito`)
@@ -70,19 +70,19 @@ function cargarProductosCarrito(productosEnCarrito) {
         `
     })
 
- for (let bermudas of productosEnCarrito) {
- document.getElementById(`botonEliminar${bermudas.id}`).addEventListener("click",()=>{
-     console.log(`La prenda ${bermudas.tipo} ${bermudas.modelo} fue removida del carrito`)
-     let cardProductoCarrito = document.getElementById(`productoCarrito${bermudas.id}`)
-     cardProductoCarrito.remove()
-     let borrarPrenda = productosEnCarrito.find((bermuda) => bermuda.id == bermudas.id)
-     let indice = productosEnCarrito.indexOf(borrarPrenda)
-     productosEnCarrito.splice(indice, 1)
-     localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
-     calcularTotal(productosEnCarrito)
- })
-}
-calcularTotal(productosEnCarrito)
+    for (let bermudas of productosEnCarrito) {
+        document.getElementById(`botonEliminar${bermudas.id}`).addEventListener("click", () => {
+            console.log(`La prenda ${bermudas.tipo} ${bermudas.modelo} fue removida del carrito`)
+            let cardProductoCarrito = document.getElementById(`productoCarrito${bermudas.id}`)
+            cardProductoCarrito.remove()
+            let borrarPrenda = productosEnCarrito.find((bermuda) => bermuda.id == bermudas.id)
+            let indice = productosEnCarrito.indexOf(borrarPrenda)
+            productosEnCarrito.splice(indice, 1)
+            localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+            calcularTotal(productosEnCarrito)
+        })
+    }
+    calcularTotal(productosEnCarrito)
 }
 
 function agregarAlCarrito(bermuda) {
@@ -115,8 +115,35 @@ function agregarAlCarrito(bermuda) {
 
 precioTotal = document.getElementById("precioTotal")
 
-function calcularTotal(productosEnCarrito){
-    let total = productosEnCarrito.reduce((acc, remera)=>acc + remera.precio ,0)
+function calcularTotal(productosEnCarrito) {
+    let total = productosEnCarrito.reduce((acc, remera) => acc + remera.precio, 0)
     precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
     total == 0 ? precioTotal.innerHTML = "No hay productos en el carrito por el momento." : precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
 }
+
+let finalizarCompra = document.getElementById("finalizarCompra")
+finalizarCompra.addEventListener("click", finCompra)
+function finCompra() {
+    Swal.fire({
+        title: '¿Estás seguro que quieres finalizar la compra?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'Cerrar'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Gracias por su compra!',
+                icon: 'success',
+            })
+            productosEnCarrito = []
+            localStorage.setItem("carrito", productosEnCarrito)
+            modalBodyCarrito.remove()
+            calcularTotal(productosEnCarrito)
+            finalizarCompra.remove()
+        }
+    })
+}
+
+

@@ -48,6 +48,7 @@ button i {
 div p {
     padding-top: 10px;
     color: rgb(61, 61, 61);
+    text-decoration: solid;
 }
 .card-body {
     display: flex;
@@ -150,4 +151,16 @@ div p {
 }
 .classShorts {
     padding-bottom: 15px;
+}
+/* Boton de eliminar */
+
+.card-body button {
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    display: flex;
+}
+.fa-trash-alt {
+    padding-left: 1.5px;
+    padding-top: 4px;
 }

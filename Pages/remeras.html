@@ -59,8 +59,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="" data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop">Contacto</a>
+            <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Contacto</a>
           </li>
           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -73,10 +72,11 @@
                 <div class="modal-body">
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Ingresa tu e-mail</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                      placeholder="name@example.com">
                   </div>
                   <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label" >Mensaje</label>
+                    <label for="exampleFormControlTextarea1" class="form-label">Mensaje</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                   </div>
                 </div>
@@ -88,8 +88,8 @@
             </div>
           </div>
         </ul>
-         <!-- Button trigger modal -->
-         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnCarrito">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnCarrito">
           <i id="carrito" class="fa-solid fa-cart-shopping"></i>
         </button>
 
@@ -102,13 +102,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div id="modal-bodyCarrito">
+
               </div>
               <div class="row ml-ato">
                 <p id="precioTotal"></p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Finalizar la Compra</button>
+                <button type="button" class="btn btn-primary" id="finalizarCompra">Finalizar la Compra</button>
               </div>
             </div>
           </div>

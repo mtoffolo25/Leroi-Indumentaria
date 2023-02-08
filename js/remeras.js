@@ -132,3 +132,31 @@ agregarAlCarro.addEventListener("click", (e) => {
     precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
     total == 0 ? precioTotal.innerHTML = "No hay productos en el carrito por el momento." : precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
     }
+
+    let finalizarCompra = document.getElementById("finalizarCompra")
+finalizarCompra.addEventListener("click", finCompra)
+function finCompra() {
+    Swal.fire({
+        title: '¿Estás seguro que quieres finalizar la compra?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'Cerrar'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Gracias por su compra!',
+                icon: 'success',
+            })
+            productosEnCarrito = []
+            localStorage.setItem("carrito", productosEnCarrito)
+            modalBodyCarrito.remove()
+            calcularTotal(productosEnCarrito)
+            finalizarCompra.remove()
+        }
+    })
+}
+
+    
+
