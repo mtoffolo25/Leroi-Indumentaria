@@ -165,23 +165,27 @@ div p {
     padding-top: 4px;
 }
 /* Sobre Nosotros */
-.imagen-fondo {
-    display: flex;
-    justify-content: center;
+.sobre-nosotros {
     background-image: url(../Assets/imagen-sobrenosotros.jpg);
-    background-position-y: 57%;
+    background-size: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-.textos {
-    width: 70%;
-    text-align: center;
-    padding-top: 50px;
-}
-.textos h1 {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: bold;
+
+.titulo h1 {
+    font-family: 'Neucha';
     font-size: 80px;
+    color: white;
+    text-align: center;
+    padding-bottom: 80px;
 }
-.textos p {
+.parrafos p {
+    font-family: 'Neucha';
     font-size:20px;
+    color: white;
+    width: 75%;
+    text-align: center;
+    padding-left: 25%;
 }
