@@ -122,6 +122,8 @@ function agregarAlCarrito(short) {
     }
 }
 
+cargarProductosCarrito(productosEnCarrito)
+
 precioTotal = document.getElementById("precioTotal")
 
 function calcularTotal(productosEnCarrito) {

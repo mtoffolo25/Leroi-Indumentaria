@@ -113,6 +113,8 @@ function agregarAlCarrito(bermuda) {
     }
 }
 
+cargarProductosCarrito(productosEnCarrito)
+
 precioTotal = document.getElementById("precioTotal")
 
 function calcularTotal(productosEnCarrito) {
