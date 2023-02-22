@@ -7,46 +7,50 @@ class shorts {
             this.color = color,
             this.precio = precio
         this.imagen = imagen
+        this.cantidad = 1
     }
 }
 
-const short1 = new shorts(`28`, `Short`, `Liso`, `Rosa`, 5200, "short-baño-nuevo.jpg")
-const short2 = new shorts(`29`, `Short`, `Rayado`, `Marrón`, 5000, "short1.jpg")
-const short3 = new shorts(`30`, `Short`, `Rayado`, `Celeste y Rosa`, 4700, "short2.jpg")
-const short4 = new shorts(`31`, `Short`, `Rayado`, `Rosa`, 5200, "short3.jpg")
-const short5 = new shorts(`32`, `Short`, `Rayado`, `Celeste`, 5800, "short4.jpg")
-const short6 = new shorts(`33`, `Short`, `Rayado`, `Verde`, 6000, "short5.jpg")
-const short7 = new shorts(`34`, `Short`, `Rayado`, `Azul`, 5700, "short6.jpg")
-const short8 = new shorts(`35`, `Short`, `Rayado`, `Negro, Blanco y Rojo`, 5300, "short7.jpg")
+const arrayShorts = []
 
+const cargarShorts = async () => {
+    const response = await fetch("../shorts.json")
+    const data = await response.json()
+    let divShorts = document.getElementById("catShorts")
+    for (let short of data) {
+        let shortNva = new shorts(short.id, short.tipo, short.modelo, short.color, short.precio, short.imagen)
+        arrayShorts.push(shortNva)
+        let nuevoShort = document.createElement('div');
+        nuevoShort.classList.add('classShorts');
+        nuevoShort.innerHTML = `<div class="card" style="width: 18rem;">
+        <img src=../Assets/${short.imagen} class="card-img-top" alt="Short">
+        <div class="card-body">
+          <h5 class="card-title">${short.tipo} ${short.modelo}</h5>
+          <h6 class=""> $${short.precio}</h6>
+          <a href="#" id="${short.id}" class="btn btn-primary agregar-carrito">Agregar al Carrito</a>
+        </div>
+      </div>`;
 
-const arrayShorts = [short1, short2, short3, short4, short5, short6, short7, short8]
+        divShorts.appendChild(nuevoShort);
+
+        let agregarShort = document.getElementById(`${short.id}`);
+
+        agregarShort.addEventListener("click", (e) => {
+            console.log(`La prenda ${short.tipo} ${short.modelo} de color ${short.color} ha sido agregada al carrito`)
+            e.preventDefault()
+            agregarAlCarrito(short)
+            cargarProductosCarrito(productosEnCarrito)
+        })
+    }
+}
+
+cargarShorts ()
 
 let productosEnCarrito = []
 
-let divShorts = document.getElementById("catShorts")
+
 for (let short of arrayShorts) {
-    let nuevoShort = document.createElement('div');
-    nuevoShort.classList.add('classShorts');
-    nuevoShort.innerHTML = `<div class="card" style="width: 18rem;">
-    <img src=../Assets/${short.imagen} class="card-img-top" alt="Short">
-    <div class="card-body">
-      <h5 class="card-title">${short.tipo} ${short.modelo}</h5>
-      <h6 class=""> $${short.precio}</h6>
-      <a href="#" id="${short.id}" class="btn btn-primary agregar-carrito">Agregar al Carrito</a>
-    </div>
-  </div>`;
 
-    divShorts.appendChild(nuevoShort);
-
-    let agregarShort = document.getElementById(`${short.id}`);
-
-    agregarShort.addEventListener("click", (e) => {
-        console.log(`La prenda ${short.tipo} ${short.modelo} de color ${short.color} ha sido agregada al carrito`)
-        e.preventDefault()
-        agregarAlCarrito(short)
-        cargarProductosCarrito(productosEnCarrito)
-    })
 }
 if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))

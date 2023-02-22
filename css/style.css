@@ -133,11 +133,11 @@ div p {
     justify-content: space-evenly;
     flex-wrap: wrap;
     width: 75%;
-    height: 100vh;
+    height: 100%;
     text-align: center;
     padding-left: 25%;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 200px;
 }
 .classJeans {
     padding-bottom: 15px;

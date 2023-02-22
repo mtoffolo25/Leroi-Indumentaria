@@ -19,12 +19,6 @@ class jeans {
     }
 }
 
-// const jeans1 = new jeans(`25`, `Jeans`, `Elastizado`, `Bando`, `Azul`, 8500, "jeans-chupin.jpg")
-// const jeans2 = new jeans(`26`, `Joger`, `Jeans`, `Guns`, `Azul`, 8800, "joger.jpg")
-// const jeans3 = new jeans(`27`, `Joger`, `Gabardina`, `Vandal`, `Marron`, 7900, "joger-gabardina.jpg")
-
-
-
 const arrayJeans = []
 
 const cargarJeans = async () => {
@@ -34,35 +28,33 @@ const cargarJeans = async () => {
     for (let jean of data) {
         let jeansNvos = new jeans(jean.id, jean.tipo, jean.modelo, jean.color, jean.precio, jean.imagen)
         arrayJeans.push(jeansNvos)
+        let divJeans = document.getElementById("catJeans")
+        let nuevoJean = document.createElement("div")
+        nuevoJean.classList.add("classJeans")
+        nuevoJean.innerHTML = `<div class="card" style="width: 18rem;">
+        <img src=../Assets/${jean.imagen} class="card-img-top" alt="jean">
+        <div class="card-body">
+          <h5 class="card-title">${jean.tipo} ${jean.modelo}</h5>
+            $${jean.precio}</h6>
+          <a href="#" id="${jean.id}" class="btn btn-primary">Agregar al Carrito</a>
+        </div>
+      </div>`
+
+        divJeans.appendChild(nuevoJean)
+
+        let agregarCarro = document.getElementById(`${jean.id}`);
+
+        agregarCarro.addEventListener("click", (e) => {
+            console.log(`La prenda ${jean.tipo} ${jean.modelo} de color ${jean.color} ha sido agregada al carrito`)
+            e.preventDefault()
+            agregarAlCarrito(jean)
+            cargarProductosCarrito(productosEnCarrito)
+        })
     }
 }
 
 cargarJeans()
 
-let divJeans = document.getElementById("catJeans")
-for (let jean of arrayJeans) {
-    let nuevoJean = document.createElement("div")
-    nuevoJean.classList.add("classJeans")
-    nuevoJean.innerHTML = `<div class="card" style="width: 18rem;">
-    <img src=../Assets/${jean.imagen} class="card-img-top" alt="jean">
-    <div class="card-body">
-      <h5 class="card-title">${jean.tipo} ${jean.modelo}</h5>
-        $${jean.precio}</h6>
-      <a href="#" id="${jean.id}" class="btn btn-primary">Agregar al Carrito</a>
-    </div>
-  </div>`
-
-    divJeans.appendChild(nuevoJean)
-
-    let agregarCarro = document.getElementById(`${jean.id}`);
-
-    agregarCarro.addEventListener("click", (e) => {
-        console.log(`La prenda ${jean.tipo} ${jean.modelo} de color ${jean.color} ha sido agregada al carrito`)
-        e.preventDefault()
-        agregarAlCarrito(jean)
-        cargarProductosCarrito(productosEnCarrito)
-    })
-}
 if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
     console.log(productosEnCarrito)

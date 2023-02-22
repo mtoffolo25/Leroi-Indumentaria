@@ -1,0 +1,74 @@
+[
+    {
+        "id": 11,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Azul",
+        "precio": 4500,
+        "imagen": "camisa-azul.jpg"
+    },
+    {
+        "id": 12,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Beige",
+        "precio": 4000,
+        "imagen": "camisa-beige.jpg"
+    },
+    {
+        "id": 13,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Blanco",
+        "precio": 4700,
+        "imagen": "camisa-blanca.jpg"
+    },
+    {
+        "id": 14,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Celeste",
+        "precio": 5200,
+        "imagen": "camisa-celeste.jpg"
+    },
+    {
+        "id": 15,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Celeste",
+        "precio": 5800,
+        "imagen": "camisa-celeste2.jpg"
+    },
+    {
+        "id": 16,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Marrón",
+        "precio": 6000,
+        "imagen": "camisa-marron.jpg"
+    },
+    {
+        "id": 17,
+        "tipo": "Camisa",
+        "modelo": "Cuello Mao",
+        "color": "Negro",
+        "precio": 7500,
+        "imagen": "camisa-negra-mao.jpg"
+    },
+    {
+        "id": 18,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Negro",
+        "precio": 7300,
+        "imagen": "camisa-negra.jpg"
+    },
+    {
+        "id": 19,
+        "tipo": "Camisa",
+        "modelo": "Lino",
+        "color": "Blanco",
+        "precio": 6900,
+        "imagen": "camisa.jpg"
+    }
+]

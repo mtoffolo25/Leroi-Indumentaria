@@ -1,0 +1,66 @@
+[
+    {
+        "id": 28,
+        "tipo": "Short",
+        "modelo": "Liso",
+        "color": "Rosa",
+        "precio": 5200,
+        "imagen": "short-baño-nuevo.jpg"
+    },
+    {
+        "id": 29,
+        "tipo": "Short",
+        "modelo": "Rayado",
+        "color": "Marrón",
+        "precio": 5000,
+        "imagen": "short1.jpg"
+    },
+    {
+        "id": 30,
+        "tipo": "Short",
+        "modelo": "Rayado",
+        "color": "Celeste y Rosa",
+        "precio": 4700,
+        "imagen": "short2.jpg"
+    },
+    {
+        "id": 31,
+        "tipo": "Short",
+        "modelo": "Rayado",
+        "color": "Rosa",
+        "precio": 5200,
+        "imagen": "short3.jpg"
+    },
+    {
+        "id": 32,
+        "tipo": "Short",
+        "modelo": "Rayado",
+        "color": "Celeste",
+        "precio": 5800,
+        "imagen": "short4.jpg"
+    },
+    {
+        "id": 33,
+        "tipo": "Short",
+        "modelo": "Rayado",
+        "color": "Verde",
+        "precio": 6000,
+        "imagen": "short5.jpg"
+    },
+    {
+        "id": 34,
+        "tipo": "Short",
+        "modelo": "Rayado",
+        "color": "Azul",
+        "precio": 5700,
+        "imagen": "short6.jpg"
+    },
+    {
+        "id": 35,
+        "tipo": "Short",
+        "modelo": "Rayado",
+        "color": "Negro",
+        "precio": 5300,
+        "imagen": "short7.jpg"
+    }
+]

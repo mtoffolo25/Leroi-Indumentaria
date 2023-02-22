@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "tipo": "Remera",
+        "modelo": "Algodon",
+        "color": "Negro",
+        "precio": 4500,
+        "imagen": "remera-negra.jpg"
+    },
+    {
+        "id": 2,
+        "tipo": "Remera",
+        "modelo": "Musculosa",
+        "color": "Gris",
+        "precio": 4000,
+        "imagen": "musculosa-gris.jpg"
+    },
+    {
+        "id": 3,
+        "tipo": "Remera",
+        "modelo": "Chomba",
+        "color": "Blanco",
+        "precio": 4700,
+        "imagen": "chomba-negra.jpg"
+    },
+    {
+        "id": 4,
+        "tipo": "Remera",
+        "modelo": "Chomba",
+        "color": "Blanco",
+        "precio": 5200,
+        "imagen": "chomba-blanca.jpg"
+    },
+    {
+        "id": 5,
+        "tipo": "Remera",
+        "modelo": "Musculosa",
+        "color": "Beige",
+        "precio": 5800,
+        "imagen": "musculosa-beige.jpg"
+    },
+    {
+        "id": 6,
+        "tipo": "Remera",
+        "modelo": "Algodon",
+        "color": "Blanco",
+        "precio": 6000,
+        "imagen": "remera-blanca-bonita.jpg"
+    },
+    {
+        "id": 7,
+        "tipo": "Remera",
+        "modelo": "Algodon",
+        "color": "Gris",
+        "precio": 7500,
+        "imagen": "remera-gris.lastsoul.jpg"
+    },
+    {
+        "id": 8,
+        "tipo": "Remera",
+        "modelo": "Musculosa",
+        "color": "Blanco",
+        "precio": 7300,
+        "imagen": "musculosa-blanca.jpg"
+    },
+    {
+        "id": 9,
+        "tipo": "Remera",
+        "modelo": "Elastizada",
+        "color": "Negro",
+        "precio": 6900,
+        "imagen": "remera-negra2.jpg"
+    },
+    {
+        "id": 10,
+        "tipo": "Remera",
+        "modelo": "Musculosa",
+        "color": "Negro",
+        "precio": 8000,
+        "imagen": "musculosa-nueva.jpg"
+    }
+]
