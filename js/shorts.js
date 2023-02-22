@@ -8,9 +8,6 @@ class shorts {
             this.precio = precio
         this.imagen = imagen
     }
-    mostrarInfoPrenda() {
-        console.log(`Es un/a ${this.tipo}, modelo ${this.modelo}, es de color ${this.color} y vale ${this.precio}`)
-    }
 }
 
 const short1 = new shorts(`28`, `Short`, `Liso`, `Rosa`, 5200, "short-baño-nuevo.jpg")
@@ -149,7 +146,7 @@ function finCompra() {
                 icon: 'success',
             })
             productosEnCarrito = []
-            localStorage.setItem("carrito", productosEnCarrito)
+            localStorage.removeItem("carrito")
             modalBodyCarrito.remove()
             calcularTotal(productosEnCarrito)
             finalizarCompra.remove()

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 25,
+        "tipo": "Jeans",
+        "modelo": "Elastizado",
+        "color": "Azul",
+        "precio": 8500,
+        "imagen": "jeans-chupin.jpg"
+    },
+    {
+        "id": 26,
+        "tipo": "Joger",
+        "modelo": "Jeans",
+        "color": "Azul",
+        "precio": 8800,
+        "imagen": "joger.jpg"
+    },
+    {
+        "id": 27,
+        "tipo": "Joger",
+        "modelo": "Gabardina",
+        "color": "Marrón",
+        "precio": 7900,
+        "imagen": "joger-gabardina.jpg"
+    }
+]

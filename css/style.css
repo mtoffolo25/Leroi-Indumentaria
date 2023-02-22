@@ -11,9 +11,16 @@
 
 .cards-lo-nuevo {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.cards-lo-nuevo .card {
+    padding-bottom: 0px;
+    padding-top: 30px;
 }
 
 .redes {
@@ -36,8 +43,8 @@ div button {
 
 }
 
-button i {
-    font-size: 45px;
+i {
+    font-size: 50px;
     color: white;
 }
 
@@ -168,7 +175,7 @@ div p {
 .sobre-nosotros {
     background-image: url(../Assets/imagen-sobrenosotros.jpg);
     background-size: 100%;
-    height: 100vh;
+    height:75em;
     display: flex;
     flex-direction: column;
     justify-content: center;

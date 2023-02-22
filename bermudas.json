@@ -1,0 +1,42 @@
+[
+    {
+        "id": 20,
+        "tipo": "Bermuda",
+        "modelo": "Jeans",
+        "color": "Azul",
+        "precio": 7400,
+        "imagen": "bermuda-jean.jpg"
+    },
+    {
+        "id": 21,
+        "tipo": "Bermuda",
+        "modelo": "Gabardina",
+        "color": "Negro",
+        "precio": 7600,
+        "imagen": "bermuda-lacoste-negra.jpg"
+    },
+    {
+        "id": 22,
+        "tipo": "Bermuda",
+        "modelo": "Gabardina",
+        "color": "Marrón",
+        "precio": 7600,
+        "imagen": "bermuda-lacoste.jpg"
+    },
+    {
+        "id": 23,
+        "tipo": "Bermuda",
+        "modelo": "Jeans",
+        "color": "Negro",
+        "precio": 7800,
+        "imagen": "bermuda-negra.jpg"
+    },
+    {
+        "id": 24,
+        "tipo": "Bermuda",
+        "modelo": "Jeans",
+        "color": "Negro",
+        "precio": 8000,
+        "imagen": "bermuda.jpg"
+    }
+]

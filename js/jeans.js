@@ -4,23 +4,40 @@ class jeans {
         this.id = id
         this.tipo = tipo,
             this.modelo = modelo,
-            this.marca = marca,
             this.color = color,
             this.precio = precio
         this.imagen = imagen
+        this.cantidad = 1
     }
-    mostrarInfoPrenda() {
-        console.log(`Es un/a ${this.tipo}, modelo ${this.modelo} su marca es ${this.marca}, es de color ${this.color} y vale ${this.precio}`)
+    sumarUnidad() {
+        this.cantidad = this.cantidad + 1
+        return this.cantidad
+    }
+    restarUnidad() {
+        this.cantidad = this.cantidad - 1
+        return this.cantidad
     }
 }
 
-const jeans1 = new jeans(`25`, `Jeans`, `Elastizado`, `Bando`, `Azul`, 8500, "jeans-chupin.jpg")
-const jeans2 = new jeans(`26`, `Joger`, `Jeans`, `Guns`, `Azul`, 8800, "joger.jpg")
-const jeans3 = new jeans(`27`, `Joger`, `Gabardina`, `Vandal`, `Marron`, 7900, "joger-gabardina.jpg")
+// const jeans1 = new jeans(`25`, `Jeans`, `Elastizado`, `Bando`, `Azul`, 8500, "jeans-chupin.jpg")
+// const jeans2 = new jeans(`26`, `Joger`, `Jeans`, `Guns`, `Azul`, 8800, "joger.jpg")
+// const jeans3 = new jeans(`27`, `Joger`, `Gabardina`, `Vandal`, `Marron`, 7900, "joger-gabardina.jpg")
 
 
 
-const arrayJeans = [jeans1, jeans2, jeans3]
+const arrayJeans = []
+
+const cargarJeans = async () => {
+    const response = await fetch("../jeans.json")
+    const data = await response.json()
+
+    for (let jean of data) {
+        let jeansNvos = new jeans(jean.id, jean.tipo, jean.modelo, jean.color, jean.precio, jean.imagen)
+        arrayJeans.push(jeansNvos)
+    }
+}
+
+cargarJeans()
 
 let divJeans = document.getElementById("catJeans")
 for (let jean of arrayJeans) {
@@ -30,7 +47,7 @@ for (let jean of arrayJeans) {
     <img src=../Assets/${jean.imagen} class="card-img-top" alt="jean">
     <div class="card-body">
       <h5 class="card-title">${jean.tipo} ${jean.modelo}</h5>
-      <h6 class=${jean.marca}> $${jean.precio}</h6>
+        $${jean.precio}</h6>
       <a href="#" id="${jean.id}" class="btn btn-primary">Agregar al Carrito</a>
     </div>
   </div>`
@@ -144,7 +161,7 @@ function finCompra() {
                 icon: 'success',
             })
             productosEnCarrito = []
-            localStorage.setItem("carrito", productosEnCarrito)
+            localStorage.removeItem("carrito")
             modalBodyCarrito.remove()
             calcularTotal(productosEnCarrito)
             finalizarCompra.remove()

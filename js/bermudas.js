@@ -6,19 +6,40 @@ class bermudas {
             this.color = color,
             this.precio = precio,
             this.imagen = imagen
+        this.cantidad = 1
     }
-    mostrarInfoPrenda() {
-        console.log(`Es un/a ${this.tipo}, modelo ${this.modelo} su marca es ${this.marca}, es de color ${this.color} y vale ${this.precio}`)
+    sumarUnidad() {
+        this.cantidad = this.cantidad + 1
+        return this.cantidad
+    }
+    restarUnidad() {
+        this.cantidad = this.cantidad -1
+        return this.cantidad
     }
 }
 
-const bermuda1 = new bermudas(`20`, `Bermuda`, `Jeans`, `Azul`, 7400, `bermuda-jean.jpg`)
-const bermuda2 = new bermudas(`21`, `Bermuda`, `Gabardina`, `Negro`, 7600, `bermuda-lacoste-negra.jpg`)
-const bermuda3 = new bermudas(`22`, `Bermuda`, `Gabardina`, `Marrón`, 7600, `bermuda-lacoste.jpg`)
-const bermuda4 = new bermudas(`23`, `Bermuda`, `Jeans`, `Negro`, 7800, `bermuda-negra.jpg`)
-const bermuda5 = new bermudas(`24`, `Bermuda`, `Jeans`, `Negro`, 8000, `bermuda.jpg`)
+// const bermuda1 = new bermudas(`20`, `Bermuda`, `Jeans`, `Azul`, 7400, `bermuda-jean.jpg`)
+// const bermuda2 = new bermudas(`21`, `Bermuda`, `Gabardina`, `Negro`, 7600, `bermuda-lacoste-negra.jpg`)
+// const bermuda3 = new bermudas(`22`, `Bermuda`, `Gabardina`, `Marrón`, 7600, `bermuda-lacoste.jpg`)
+// const bermuda4 = new bermudas(`23`, `Bermuda`, `Jeans`, `Negro`, 7800, `bermuda-negra.jpg`)
+// const bermuda5 = new bermudas(`24`, `Bermuda`, `Jeans`, `Negro`, 8000, `bermuda.jpg`)
 
-const arrayBermudas = [bermuda1, bermuda2, bermuda3, bermuda4, bermuda5]
+// const arrayBermudas = [bermuda1, bermuda2, bermuda3, bermuda4, bermuda5]
+
+const arrayBermudas = []
+
+const cargarBermudas = async () => {
+    const response = await fetch ("../bermudas.json")
+    const data = await response.json()
+
+    for (let bermuda of data) {
+        let bermudaNva = new bermudas (bermuda.id, bermuda.tipo, bermuda.modelo, bermuda.color, bermuda.precio, bermuda.imagen)
+        arrayBermudas.push(bermudaNva)
+    }
+}
+
+cargarBermudas()
+
 productosEnCarrito = []
 
 let divBermudas = document.getElementById("catBermudas")
@@ -44,7 +65,6 @@ for (let bermuda of arrayBermudas) {
 }
 if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
-    console.log(productosEnCarrito)
 } else {
     productosEnCarrito = []
     localStorage.setItem("carrito", productosEnCarrito)
@@ -140,7 +160,7 @@ function finCompra() {
                 icon: 'success',
             })
             productosEnCarrito = []
-            localStorage.setItem("carrito", productosEnCarrito)
+            localStorage.removeItem("carrito")
             modalBodyCarrito.remove()
             calcularTotal(productosEnCarrito)
             finalizarCompra.remove()

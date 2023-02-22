@@ -148,7 +148,7 @@ function finCompra() {
                 icon: 'success',
             })
             productosEnCarrito = []
-            localStorage.setItem("carrito", productosEnCarrito)
+            localStorage.removeItem("carrito")
             modalBodyCarrito.remove()
             calcularTotal(productosEnCarrito)
             finalizarCompra.remove()
