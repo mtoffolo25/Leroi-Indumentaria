@@ -1,3 +1,8 @@
+const arrayRemeras = []
+let productosEnCarrito = []
+precioTotal = document.getElementById("precioTotal")
+let finalizarCompra = document.getElementById("finalizarCompra")
+
 class remeras {
     constructor(id, tipo, modelo, marca, color, precio, imagen) {
 
@@ -11,10 +16,8 @@ class remeras {
     }
 }
 
-const arrayRemeras = []
-
 const cargarRemeras = async () => {
-    const response = await fetch("../remeras.json")
+    const response = await fetch("../json/remeras.json")
     const data = await response.json()
     let divRemeras = document.getElementById("catRemeras")
     for (let remera of data) {
@@ -44,8 +47,6 @@ const cargarRemeras = async () => {
 }
 
 cargarRemeras()
-
-let productosEnCarrito = []
 
 if (localStorage.getItem("carrito")) {
     for (let remera of JSON.stringify("carrito")) {
@@ -121,15 +122,12 @@ function agregarAlCarrito(remera) {
 
 cargarProductosCarrito(productosEnCarrito)
 
-precioTotal = document.getElementById("precioTotal")
-
 function calcularTotal(productosEnCarrito) {
     let total = productosEnCarrito.reduce((acc, remera) => acc + remera.precio, 0)
     precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
     total == 0 ? precioTotal.innerHTML = "No hay productos en el carrito por el momento." : precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
 }
 
-let finalizarCompra = document.getElementById("finalizarCompra")
 finalizarCompra.addEventListener("click", finCompra)
 function finCompra() {
     Swal.fire({

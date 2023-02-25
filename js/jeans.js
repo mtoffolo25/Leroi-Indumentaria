@@ -1,3 +1,7 @@
+const arrayJeans = []
+precioTotal = document.getElementById("precioTotal")
+let finalizarCompra = document.getElementById("finalizarCompra")
+
 class jeans {
     constructor(id, tipo, modelo, marca, color, precio, imagen) {
 
@@ -10,10 +14,8 @@ class jeans {
     }
 }
 
-const arrayJeans = []
-
 const cargarJeans = async () => {
-    const response = await fetch("../jeans.json")
+    const response = await fetch("../json/jeans.json")
     const data = await response.json()
 
     for (let jean of data) {
@@ -75,7 +77,6 @@ function cargarProductosCarrito(productosEnCarrito) {
 
     for (let jean of productosEnCarrito) {
         document.getElementById(`botonEliminar${jean.id}`).addEventListener("click", () => {
-            console.log(`La prenda ${jean.tipo} ${jean.modelo} fue removida del carrito`)
             let cardProductoCarrito = document.getElementById(`productoCarrito${jean.id}`)
             cardProductoCarrito.remove()
             let borrarPrenda = productosEnCarrito.find((jean) => jean.id == jean.id)
@@ -117,15 +118,12 @@ function agregarAlCarrito(jean) {
 
 cargarProductosCarrito(productosEnCarrito)
 
-precioTotal = document.getElementById("precioTotal")
-
 function calcularTotal(productosEnCarrito) {
     let total = productosEnCarrito.reduce((acc, jean) => acc + jean.precio, 0)
     precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
     total == 0 ? precioTotal.innerHTML = "No hay productos en el carrito por el momento." : precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
 }
 
-let finalizarCompra = document.getElementById("finalizarCompra")
 finalizarCompra.addEventListener("click", finCompra)
 function finCompra() {
     Swal.fire({

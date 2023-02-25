@@ -1,3 +1,8 @@
+const arrayShorts = []
+let productosEnCarrito = []
+precioTotal = document.getElementById("precioTotal")
+let finalizarCompra = document.getElementById("finalizarCompra")
+
 class shorts {
     constructor(id, tipo, modelo, color, precio, imagen) {
 
@@ -10,10 +15,8 @@ class shorts {
     }
 }
 
-const arrayShorts = []
-
 const cargarShorts = async () => {
-    const response = await fetch("../shorts.json")
+    const response = await fetch("../json/shorts.json")
     const data = await response.json()
     let divShorts = document.getElementById("catShorts")
     for (let short of data) {
@@ -43,9 +46,6 @@ const cargarShorts = async () => {
 }
 
 cargarShorts ()
-
-let productosEnCarrito = []
-
 
 for (let short of arrayShorts) {
 
@@ -122,15 +122,12 @@ function agregarAlCarrito(short) {
 
 cargarProductosCarrito(productosEnCarrito)
 
-precioTotal = document.getElementById("precioTotal")
-
 function calcularTotal(productosEnCarrito) {
     let total = productosEnCarrito.reduce((acc, short) => acc + short.precio, 0)
     precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
     total == 0 ? precioTotal.innerHTML = "No hay productos en el carrito por el momento." : precioTotal.innerHTML = `TOTAL DE LA COMPRA <strong>$${total}</strong>`
 }
 
-let finalizarCompra = document.getElementById("finalizarCompra")
 finalizarCompra.addEventListener("click", finCompra)
 function finCompra() {
     Swal.fire({

@@ -1,4 +1,5 @@
 productosEnCarrito = []
+
 if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
 } else {
