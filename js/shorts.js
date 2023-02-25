@@ -7,7 +7,6 @@ class shorts {
             this.color = color,
             this.precio = precio
         this.imagen = imagen
-        this.cantidad = 1
     }
 }
 
@@ -36,7 +35,6 @@ const cargarShorts = async () => {
         let agregarShort = document.getElementById(`${short.id}`);
 
         agregarShort.addEventListener("click", (e) => {
-            console.log(`La prenda ${short.tipo} ${short.modelo} de color ${short.color} ha sido agregada al carrito`)
             e.preventDefault()
             agregarAlCarrito(short)
             cargarProductosCarrito(productosEnCarrito)
@@ -54,7 +52,6 @@ for (let short of arrayShorts) {
 }
 if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
-    console.log(productosEnCarrito)
 } else {
     productosEnCarrito = []
     localStorage.setItem("carrito", productosEnCarrito)
@@ -67,14 +64,15 @@ function cargarProductosCarrito(productosEnCarrito) {
     modalBodyCarrito.innerHTML = ""
     productosEnCarrito.forEach((short) => {
         modalBodyCarrito.innerHTML +=
-            `
+        `
         <div class="card border-primary mb-3" id ="productoCarrito${short.id}" style="max-width: 540px;">
                  <img class="card-img-top" height="200px" src="../assets/${short.imagen}" alt="">
                  <div class="card-body">
                         <h4 class="card-title">${short.tipo} ${short.modelo} de color ${short.color}</h4>
-                    
-                         <p class="card-text">$${short.precio}</p> 
-                         <button class= "btn btn-danger" id="botonEliminar${short.id}"><i class="fas fa-trash-alt"></i></button>
+                         <h6 class="card-text">Precio unitario: $${short.precio}</h6>
+                         <div class= "botonesCarrito">
+                         <button class= "btn btn-danger" id="botonEliminar${short.id}"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                         </div>
                  </div>    
             </div>
         `
@@ -103,7 +101,6 @@ function agregarAlCarrito(short) {
         Swal.fire({
             title: 'Prenda agregada al carrito',
             text: `La prenda ${short.tipo} ${short.modelo} ha sido agregada al carrito`,
-            icon: "info",
             confirmButtonColor: "green",
             confirmButtonText: "Aceptar",
             timer: 3000,
@@ -114,7 +111,7 @@ function agregarAlCarrito(short) {
     } else {
         Swal.fire({
             title: 'Prenda ya agregada',
-            text: `La prenda ${short.tipo} ${short.modelo} ya existe en el carrito`,
+            text: `La prenda ${short.tipo} ${short.modelo} ya existe en el carrito.`,
             icon: "info",
             showConfirmButton: false,
             timer: 1500,

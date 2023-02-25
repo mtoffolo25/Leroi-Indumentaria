@@ -7,15 +7,6 @@ class jeans {
             this.color = color,
             this.precio = precio
         this.imagen = imagen
-        this.cantidad = 1
-    }
-    sumarUnidad() {
-        this.cantidad = this.cantidad + 1
-        return this.cantidad
-    }
-    restarUnidad() {
-        this.cantidad = this.cantidad - 1
-        return this.cantidad
     }
 }
 
@@ -45,7 +36,6 @@ const cargarJeans = async () => {
         let agregarCarro = document.getElementById(`${jean.id}`);
 
         agregarCarro.addEventListener("click", (e) => {
-            console.log(`La prenda ${jean.tipo} ${jean.modelo} de color ${jean.color} ha sido agregada al carrito`)
             e.preventDefault()
             agregarAlCarrito(jean)
             cargarProductosCarrito(productosEnCarrito)
@@ -57,7 +47,6 @@ cargarJeans()
 
 if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
-    console.log(productosEnCarrito)
 } else {
     productosEnCarrito = []
     localStorage.setItem("carrito", productosEnCarrito)
@@ -70,14 +59,15 @@ function cargarProductosCarrito(productosEnCarrito) {
     modalBodyCarrito.innerHTML = ""
     productosEnCarrito.forEach((jean) => {
         modalBodyCarrito.innerHTML +=
-            `
+        `
         <div class="card border-primary mb-3" id ="productoCarrito${jean.id}" style="max-width: 540px;">
                  <img class="card-img-top" height="200px" src="../assets/${jean.imagen}" alt="">
                  <div class="card-body">
                         <h4 class="card-title">${jean.tipo} ${jean.modelo} de color ${jean.color}</h4>
-                    
-                         <p class="card-text">$${jean.precio}</p> 
-                         <button class= "btn btn-danger" id="botonEliminar${jean.id}"><i class="fas fa-trash-alt"></i></button>
+                         <h6 class="card-text">Precio unitario: $${jean.precio}</h6>
+                         <div class= "botonesCarrito">
+                         <button class= "btn btn-danger" id="botonEliminar${jean.id}"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                         </div>
                  </div>    
             </div>
         `
@@ -106,7 +96,6 @@ function agregarAlCarrito(jean) {
         Swal.fire({
             title: 'Prenda agregada al carrito',
             text: `La prenda ${jean.tipo} ${jean.modelo} ha sido agregada al carrito`,
-            icon: "info",
             confirmButtonColor: "green",
             confirmButtonText: "Aceptar",
             timer: 3000,
@@ -117,7 +106,7 @@ function agregarAlCarrito(jean) {
     } else {
         Swal.fire({
             title: 'Prenda ya agregada',
-            text: `La prenda ${jean.tipo} ${jean.modelo} ya existe en el carrito`,
+            text: `La prenda ${jean.tipo} ${jean.modelo} ya existe en el carrito.`,
             icon: "info",
             showConfirmButton: false,
             timer: 1500,

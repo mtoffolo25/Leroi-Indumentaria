@@ -1,22 +1,12 @@
 class camisas {
-    constructor(id, tipo, modelo, marca, color, precio, imagen) {
+    constructor(id, tipo, modelo, color, precio, imagen) {
 
         this.id = id
         this.tipo = tipo,
             this.modelo = modelo,
-            this.marca = marca,
             this.color = color,
             this.precio = precio
         this.imagen = imagen
-        this.cantidad = 1
-    }
-    sumarUnidad() {
-        this.cantidad = this.cantidad + 1
-        return this.cantidad
-    }
-    restarUnidad() {
-        this.cantidad = this.cantidad - 1
-        return this.cantidad
     }
 }
 
@@ -42,7 +32,6 @@ const cargarCamisas = async () => {
         divCamisas.appendChild(nuevaCamisa)
         let AgrCarrito = document.getElementById(`AgrCarro ${camisa.id}`)
         AgrCarrito.addEventListener("click", (e) => {
-            console.log(`La prenda ${camisa.tipo} ${camisa.modelo} de color ${camisa.color} ha sido agregada al carrito`)
             e.preventDefault()
             agregarAlCarrito(camisa)
             cargarProductosCarrito(productosEnCarrito)
@@ -50,13 +39,15 @@ const cargarCamisas = async () => {
     }
 }
 
-cargarCamisas ()
+cargarCamisas()
 
 productosEnCarrito = []
 
 if (localStorage.getItem("carrito")) {
-    productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
-    console.log(productosEnCarrito)
+    for (let camisa of JSON.parse(localStorage.getItem("carrito"))) {
+        let camisaEnCarrito = new camisas(camisa.id, camisa.tipo, camisa.modelo, camisa.color, camisa.precio, camisa.imagen)
+        productosEnCarrito.push(camisaEnCarrito)
+    }
 } else {
     productosEnCarrito = []
     localStorage.setItem("carrito", productosEnCarrito)
@@ -70,21 +61,21 @@ function cargarProductosCarrito(productosEnCarrito) {
     productosEnCarrito.forEach((camisa) => {
         modalBodyCarrito.innerHTML +=
             `
-    <div class="card border-primary mb-3" id ="productoCarrito${camisa.id}" style="max-width: 540px;">
-             <img class="card-img-top" height="200px" src="../assets/${camisa.imagen}" alt="">
-             <div class="card-body">
-                    <h4 class="card-title">${camisa.tipo} ${camisa.modelo} de color ${camisa.color}</h4>
-                
-                     <p class="card-text">$${camisa.precio}</p> 
-                     <button class= "btn btn-danger" id="botonEliminar${camisa.id}"><i class="fas fa-trash-alt"></i></button>
-             </div>    
-        </div>
-    `
+        <div class="card border-primary mb-3" id ="productoCarrito${camisa.id}" style="max-width: 540px;">
+                 <img class="card-img-top" height="200px" src="../assets/${camisa.imagen}" alt="">
+                 <div class="card-body">
+                        <h4 class="card-title">${camisa.tipo} ${camisa.modelo} de color ${camisa.color}</h4>
+                         <h6 class="card-text">Precio unitario: $${camisa.precio}</h6>
+                         <div class= "botonesCarrito">
+                         <button class= "btn btn-danger" id="botonEliminar${camisa.id}"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                         </div>
+                 </div>    
+            </div>
+        `
     })
 
     for (let camisa of productosEnCarrito) {
         document.getElementById(`botonEliminar${camisa.id}`).addEventListener("click", () => {
-            console.log(`La prenda ${camisa.tipo} ${camisa.modelo} fue removida del carrito`)
             let cardProductoCarrito = document.getElementById(`productoCarrito${camisa.id}`)
             cardProductoCarrito.remove()
             let borrarPrenda = productosEnCarrito.find((remera) => remera.id == camisa.id)
@@ -97,6 +88,8 @@ function cargarProductosCarrito(productosEnCarrito) {
     calcularTotal(productosEnCarrito)
 }
 
+
+
 function agregarAlCarrito(camisa) {
     let camisaAgregada = productosEnCarrito.find((elem) => elem.id == camisa.id)
     if (camisaAgregada == undefined) {
@@ -105,7 +98,6 @@ function agregarAlCarrito(camisa) {
         Swal.fire({
             title: 'Prenda agregada al carrito',
             text: `La prenda ${camisa.tipo} ${camisa.modelo} ha sido agregada al carrito`,
-            icon: "info",
             confirmButtonColor: "green",
             confirmButtonText: "Aceptar",
             timer: 3000,
@@ -116,7 +108,7 @@ function agregarAlCarrito(camisa) {
     } else {
         Swal.fire({
             title: 'Prenda ya agregada',
-            text: `La prenda ${camisa.tipo} ${camisa.modelo} ya existe en el carrito`,
+            text: `La prenda ${camisa.tipo} ${camisa.modelo} ya existe en el carrito.`,
             icon: "info",
             showConfirmButton: false,
             timer: 1500,

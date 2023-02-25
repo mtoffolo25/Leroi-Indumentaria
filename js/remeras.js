@@ -8,15 +8,6 @@ class remeras {
             this.color = color,
             this.precio = precio
         this.imagen = imagen
-        this.cantidad = 1
-    }
-    sumarUnidad() {
-        this.cantidad = this.cantidad + 1
-        return this.cantidad
-    }
-    restarUnidad() {
-        this.cantidad = this.cantidad - 1
-        return this.cantidad
     }
 }
 
@@ -45,7 +36,6 @@ const cargarRemeras = async () => {
         let agregarAlCarro = document.getElementById(`${remera.id}`);
 
         agregarAlCarro.addEventListener("click", (e) => {
-            console.log(`La prenda ${remera.tipo} ${remera.modelo} de color ${remera.color} ha sido agregada al carrito`)
             e.preventDefault()
             agregarAlCarrito(remera)
             cargarProductosCarrito(productosEnCarrito)
@@ -58,8 +48,10 @@ cargarRemeras()
 let productosEnCarrito = []
 
 if (localStorage.getItem("carrito")) {
-    productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
-    console.log(productosEnCarrito)
+    for (let remera of JSON.stringify("carrito")) {
+        let remeraEnCarro = new remeras(remera.id, remera.tipo, remera.modelo, remera.color, remera.precio, remera.imagen)
+        productosEnCarrito.push(remeraEnCarro)
+    }
 } else {
     productosEnCarrito = []
     localStorage.setItem("carrito", productosEnCarrito)
@@ -72,14 +64,15 @@ function cargarProductosCarrito(productosEnCarrito) {
     modalBodyCarrito.innerHTML = ""
     productosEnCarrito.forEach((remera) => {
         modalBodyCarrito.innerHTML +=
-            `
+        `
         <div class="card border-primary mb-3" id ="productoCarrito${remera.id}" style="max-width: 540px;">
                  <img class="card-img-top" height="200px" src="../assets/${remera.imagen}" alt="">
                  <div class="card-body">
                         <h4 class="card-title">${remera.tipo} ${remera.modelo} de color ${remera.color}</h4>
-                    
-                         <p class="card-text">$${remera.precio}</p> 
-                         <button class= "btn btn-danger" id="botonEliminar${remera.id}"><i class="fas fa-trash-alt"></i></button>
+                         <h6 class="card-text">Precio unitario: $${remera.precio}</h6>
+                         <div class= "botonesCarrito">
+                         <button class= "btn btn-danger" id="botonEliminar${remera.id}"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                         </div>
                  </div>    
             </div>
         `
@@ -87,7 +80,6 @@ function cargarProductosCarrito(productosEnCarrito) {
 
     for (let remera of productosEnCarrito) {
         document.getElementById(`botonEliminar${remera.id}`).addEventListener("click", () => {
-            console.log(`La prenda ${remera.tipo} ${remera.modelo} fue removida del carrito`)
             let cardProductoCarrito = document.getElementById(`productoCarrito${remera.id}`)
             cardProductoCarrito.remove()
             let borrarPrenda = productosEnCarrito.find((remera) => remera.id == remera.id)
@@ -108,7 +100,6 @@ function agregarAlCarrito(remera) {
         Swal.fire({
             title: 'Prenda agregada al carrito',
             text: `La prenda ${remera.tipo} ${remera.modelo} ha sido agregada al carrito`,
-            icon: "info",
             confirmButtonColor: "green",
             confirmButtonText: "Aceptar",
             timer: 3000,
@@ -119,7 +110,7 @@ function agregarAlCarrito(remera) {
     } else {
         Swal.fire({
             title: 'Prenda ya agregada',
-            text: `La prenda ${remera.tipo} ${remera.modelo} ya existe en el carrito`,
+            text: `La prenda ${remera.tipo} ${remera.modelo} ya existe en el carrito.`,
             icon: "info",
             showConfirmButton: false,
             timer: 1500,

@@ -111,7 +111,7 @@ div p {
 /* Bermudas */
 
 #catBermudas {
-    display: flex;
+    display:flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -123,6 +123,23 @@ div p {
 }
 .classBermudas {
     padding-bottom: 15px;
+}
+
+/* Carrito */
+
+.botonesCarrito {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.botonesCarrito button {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+.card-body h6 {
+    text-align: center;
 }
 
 /* Jeans */
@@ -158,18 +175,6 @@ div p {
 }
 .classShorts {
     padding-bottom: 15px;
-}
-/* Boton de eliminar */
-
-.card-body button {
-    width: 70px;
-    height: 70px;
-    text-align: center;
-    display: flex;
-}
-.fa-trash-alt {
-    padding-left: 1.5px;
-    padding-top: 4px;
 }
 /* Sobre Nosotros */
 .sobre-nosotros {

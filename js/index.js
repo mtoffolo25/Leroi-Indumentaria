@@ -1,7 +1,6 @@
 productosEnCarrito = []
 if (localStorage.getItem("carrito")) {
     productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
-    console.log(productosEnCarrito)
 } else {
     productosEnCarrito = []
     localStorage.setItem("carrito", productosEnCarrito)
@@ -14,14 +13,15 @@ function cargarProductosCarrito(productosEnCarrito) {
     modalBodyCarrito.innerHTML = ""
     productosEnCarrito.forEach((bermuda) => {
         modalBodyCarrito.innerHTML +=
-            `
+        `
         <div class="card border-primary mb-3" id ="productoCarrito${bermuda.id}" style="max-width: 540px;">
                  <img class="card-img-top" height="200px" src="../assets/${bermuda.imagen}" alt="">
                  <div class="card-body">
                         <h4 class="card-title">${bermuda.tipo} ${bermuda.modelo} de color ${bermuda.color}</h4>
-                    
-                         <p class="card-text">$${bermuda.precio}</p> 
-                         <button class= "btn btn-danger" id="botonEliminar${bermuda.id}"><i class="fas fa-trash-alt"></i></button>
+                         <h6 class="card-text">Precio unitario: $${bermuda.precio}</h6>
+                         <div class= "botonesCarrito">
+                         <button class= "btn btn-danger" id="botonEliminar${bermuda.id}"><i class="fa-solid fa-trash-can fa-lg"></i></button>
+                         </div>
                  </div>    
             </div>
         `
@@ -29,7 +29,6 @@ function cargarProductosCarrito(productosEnCarrito) {
 
     for (let bermudas of productosEnCarrito) {
         document.getElementById(`botonEliminar${bermudas.id}`).addEventListener("click", () => {
-            console.log(`La prenda ${bermudas.tipo} ${bermudas.modelo} fue removida del carrito`)
             let cardProductoCarrito = document.getElementById(`productoCarrito${bermudas.id}`)
             cardProductoCarrito.remove()
             let borrarPrenda = productosEnCarrito.find((bermuda) => bermuda.id == bermudas.id)
