@@ -1,6 +1,7 @@
 const arrayJeans = []
 precioTotal = document.getElementById("precioTotal")
 let finalizarCompra = document.getElementById("finalizarCompra")
+productosEnCarrito = []
 
 class jeans {
     constructor(id, tipo, modelo, marca, color, precio, imagen) {

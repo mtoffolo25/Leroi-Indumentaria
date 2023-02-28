@@ -1,5 +1,5 @@
-const arrayRemeras = []
-let productosEnCarrito = []
+arrayRemeras = []
+productosEnCarrito = []
 precioTotal = document.getElementById("precioTotal")
 let finalizarCompra = document.getElementById("finalizarCompra")
 
@@ -51,7 +51,7 @@ cargarRemeras()
 if (localStorage.getItem("carrito")) {
     for (let remera of JSON.stringify("carrito")) {
         let remeraEnCarro = new remeras(remera.id, remera.tipo, remera.modelo, remera.color, remera.precio, remera.imagen)
-        productosEnCarrito.push(remeraEnCarro)
+        arrayRemeras.push(remeraEnCarro)
     }
 } else {
     productosEnCarrito = []
